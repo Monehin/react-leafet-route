@@ -1,0 +1,9 @@
+.mapContainer {
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+.leaflet-pane.leaflet-shadow-pane {
+  display: none;
+  border: none;
+}
