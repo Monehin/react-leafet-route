@@ -17,8 +17,6 @@ import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import iconRetina from 'leaflet/dist/images/marker-icon-2x.png';
 
 import data1 from './data/route1.json';
-import data2 from './data/route2.json';
-import data3 from './data/route3.json';
 
 const MAPBOX_API_KEY = process.env.REACT_APP_MAPBOX_API_KEY;
 const MAPBOX_USERID = process.env.REACT_APP_MAPBOX_USERID;
@@ -61,9 +59,8 @@ function App() {
     });
 
     L.Marker.prototype.options.icon = DefaultIcon;
-    const marker = L.marker([-1.968236, 30.102922]);
-    marker.bindPopup('Marembo');
-    marker.addTo(map);
+    const geoJson = L.geoJSON(data1);
+    geoJson.addTo(map);
   }, [map]);
 
   return (
@@ -77,35 +74,6 @@ function App() {
       <TileLayer
         url={`https://api.mapbox.com/styles/v1/${MAPBOX_USERID}/${MAPBOX_STYLEID}/tiles/256/{z}/{x}/{y}@2x?access_token=${MAPBOX_API_KEY}`}
         attribution='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
-      />
-      <GeoJSON
-        data={data1}
-        style={() => ({
-          color: '#4a83ec',
-          weight: 3,
-          fillColor: '#1a1d62',
-          fillOpacity: 1,
-        })}
-      />
-
-      <GeoJSON
-        data={data2}
-        style={() => ({
-          color: '#4a83ec',
-          weight: 3,
-          fillColor: '#1a1d62',
-          fillOpacity: 1,
-        })}
-      />
-
-      <GeoJSON
-        data={data3}
-        style={() => ({
-          color: '#4a83ec',
-          weight: 3,
-          fillColor: '#1a1d62',
-          fillOpacity: 1,
-        })}
       />
       <LocationMarker />
     </MapContainer>
