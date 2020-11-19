@@ -61,6 +61,7 @@ function App() {
     L.Marker.prototype.options.icon = DefaultIcon;
     const geoJson = L.geoJSON(data1);
     geoJson.addTo(map);
+    map.fitBounds(geoJson.getBounds());
   }, [map]);
 
   return (
@@ -68,6 +69,7 @@ function App() {
       className='mapContainer'
       center={[-1.968236, 30.102922]}
       zoom={13}
+      zoomControl={false}
       scrollWheelZoom={true}
       whenCreated={setMap}
     >
